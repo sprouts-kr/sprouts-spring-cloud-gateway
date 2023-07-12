@@ -47,6 +47,9 @@ management:
       show-details: always
     gateway:
       enabled: true
+  info:
+    java:
+      enabled: true
 
 sprouts:
   logstash-appender:
