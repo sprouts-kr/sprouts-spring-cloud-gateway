@@ -1,0 +1,52 @@
+server:
+  port: 8080
+
+spring:
+  config:
+    activate:
+      on-profile: local-docker
+  output:
+    ansi:
+      enabled: always
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://zipkin:9411/
+  cloud:
+    gateway:
+      httpclient:
+        wiretap: true
+      httpserver:
+        wiretap: true
+      routes:
+        - id: sprouts-spring-cloud-web-api-jpa
+          uri: http://sprouts-spring-cloud-web-api-jpa:8080
+          predicates:
+            - Path=/framework/api/authorization/**
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: "*"
+  endpoint:
+    prometheus:
+      enable: true
+    refresh:
+      enabled: true
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+    gateway:
+      enabled: true
+
+sprouts:
+  logstash-appender:
+    name: LOGSTASH
+    identifier: ${spring.application.name}-${spring.profiles.active}
+    destinations:
+      - host: logstash
+        port: 5045
