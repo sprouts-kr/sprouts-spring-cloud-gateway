@@ -1,5 +1,5 @@
 server:
-  port: 8761
+  port: 8080
 
 spring:
   config:
@@ -13,6 +13,17 @@ spring:
       probability: 1.0
   zipkin:
     base-url: http://zipkin.sprouts.kr/
+  cloud:
+    gateway:
+      httpclient:
+        wiretap: true
+      httpserver:
+        wiretap: true
+      routes:
+        - id: sprouts-spring-cloud-web-api-jpa
+          uri: http://sprouts-spring-cloud-web-api-jpa:8080
+          predicates:
+            - Path=/framework/api/authorization/**
 
 management:
   endpoints:
@@ -29,6 +40,8 @@ management:
       enabled: true
     health:
       show-details: always
+    gateway:
+      enabled: true
 
 sprouts:
   logstash-appender:

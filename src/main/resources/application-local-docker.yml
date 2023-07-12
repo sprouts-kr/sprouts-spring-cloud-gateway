@@ -4,7 +4,7 @@ server:
 spring:
   config:
     activate:
-      on-profile: local
+      on-profile: local-docker
   output:
     ansi:
       enabled: always
@@ -12,7 +12,7 @@ spring:
     sampler:
       probability: 1.0
   zipkin:
-    base-url: http://zipkin.sprouts.kr/
+    base-url: http://zipkin:9411/
   cloud:
     gateway:
       httpclient:
@@ -48,5 +48,5 @@ sprouts:
     name: LOGSTASH
     identifier: ${spring.application.name}-${spring.profiles.active}
     destinations:
-      - host: 127.0.0.1
+      - host: logstash
         port: 5045
