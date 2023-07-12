@@ -14,7 +14,12 @@ spring:
   zipkin:
     base-url: http://zipkin.sprouts.kr/
   cloud:
+    discovery:
+      enabled: false
     gateway:
+      discovery:
+        locator:
+          enabled: false
       httpclient:
         wiretap: true
       httpserver:
