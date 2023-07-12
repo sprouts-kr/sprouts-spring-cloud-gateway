@@ -25,6 +25,11 @@ spring:
           predicates:
             - Path=/framework/api/authorization/**
 
+eureka:
+  client:
+    client:
+      enabled: false
+
 management:
   endpoints:
     web:
