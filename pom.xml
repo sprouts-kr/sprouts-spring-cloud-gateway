@@ -13,10 +13,11 @@
 	<version>0.0.2-SNAPSHOT</version>
 	<name>sprouts-spring-cloud-gateway</name>
 	<properties>
+		<sonar.qualitygate.wait>true</sonar.qualitygate.wait>
 		<java.version>11</java.version>
 	</properties>
 	<repositories>
-		<!-- nexus3 maven public -->
+		<!-- personal repository -->
 		<repository>
 			<id>nexus3-maven-public</id>
 			<url>https://nexus.sprouts.kr/repository/maven/</url>
