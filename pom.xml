@@ -80,7 +80,7 @@
 			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
 		</dependency>
 
-		<!-- sprouts. kr -->
+		<!-- sprouts.kr -->
 		<!-- logstash appender -->
 		<dependency>
 			<groupId>kr.sprouts.autoconfigure</groupId>
