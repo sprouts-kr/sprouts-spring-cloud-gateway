@@ -15,7 +15,7 @@ spring:
     base-url: http://zipkin.devops.sprouts.kr/
   cloud:
     discovery:
-      enabled: true
+      enabled: false
     gateway:
       discovery:
         locator:
