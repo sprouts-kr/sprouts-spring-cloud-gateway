@@ -12,7 +12,7 @@ spring:
     sampler:
       probability: 1.0
   zipkin:
-    base-url: http://zipkin.sprouts.kr/
+    base-url: http://zipkin.devops.sprouts.kr/
   cloud:
     discovery:
       enabled: true
@@ -25,18 +25,14 @@ spring:
         wiretap: true
       httpserver:
         wiretap: true
-      routes:
-        - id: sprouts-spring-cloud-web-api-jpa
-          uri: http://sprouts-spring-cloud-web-api-jpa:8080
-          predicates:
-            - Path=/framework/api/authorization/**
 
 eureka:
   instance:
-     instance-id: ${random.uuid}
-     prefer-ip-address: true
-     lease-renewal-interval-in-seconds: 3
-     lease-expiration-duration-in-seconds: 10
+    instance-id: ${random.uuid}
+    hostname: ${spring.cloud.client.hostname}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 3
+    lease-expiration-duration-in-seconds: 10
   client:
     client:
       enabled: true
@@ -47,7 +43,7 @@ eureka:
     registry-fetch-interval-seconds: 10
     disable-delta: false
     service-url:
-      defaultZone: http://discovery.framework.sprouts.kr/eureka/
+      defaultZone: http://discovery-01.framework.sprouts.kr/eureka, http://discovery-02.framework.sprouts.kr/eureka, http://discovery-03.framework.sprouts.kr/eureka
 
 management:
   endpoints:
@@ -75,5 +71,5 @@ sprouts:
     name: LOGSTASH
     identifier: ${spring.application.name}-${spring.profiles.active}
     destinations:
-      - host: 127.0.0.1
+      - host: 192.168.0.100
         port: 5045
