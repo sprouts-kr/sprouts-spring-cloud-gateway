@@ -25,11 +25,6 @@ spring:
         wiretap: true
       httpserver:
         wiretap: true
-      routes:
-        - id: sprouts-spring-cloud-web-api-jpa
-          uri: http://sprouts-spring-cloud-web-api-jpa:8080
-          predicates:
-            - Path=/framework/api/authorization/**
 
 eureka:
   client:
