@@ -15,7 +15,7 @@ spring:
     base-url: http://zipkin.sprouts.kr/
   cloud:
     discovery:
-      enabled: true
+      enabled: false
     gateway:
       discovery:
         locator:
@@ -32,22 +32,9 @@ spring:
             - Path=/framework/api/authorization/**
 
 eureka:
-  instance:
-     instance-id: ${random.uuid}
-     prefer-ip-address: true
-     lease-renewal-interval-in-seconds: 3
-     lease-expiration-duration-in-seconds: 10
   client:
     client:
-      enabled: true
-    healthcheck:
-      enabled: true
-    register-with-eureka: true
-    fetch-registry: true
-    registry-fetch-interval-seconds: 10
-    disable-delta: false
-    service-url:
-      defaultZone: http://discovery.framework.sprouts.kr/eureka/
+      enabled: false
 
 management:
   endpoints:
